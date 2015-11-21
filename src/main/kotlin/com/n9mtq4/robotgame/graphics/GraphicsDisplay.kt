@@ -4,6 +4,14 @@ import com.n9mtq4.patternimage.Pattern
 import com.n9mtq4.patternimage.PatternImage
 import com.n9mtq4.patternimage.colorgetter.StaticColor
 import com.n9mtq4.patternimage.ui.PatternImageContainer
+import com.n9mtq4.robotgame.graphics.constants.BACKGROUND
+import com.n9mtq4.robotgame.graphics.constants.BOX
+import com.n9mtq4.robotgame.graphics.constants.DISPLAY_HEIGHT
+import com.n9mtq4.robotgame.graphics.constants.DISPLAY_WIDTH
+import com.n9mtq4.robotgame.graphics.constants.GAME_DATA_FILE
+import com.n9mtq4.robotgame.graphics.constants.SCALE
+import com.n9mtq4.robotgame.graphics.constants.TEAM1
+import com.n9mtq4.robotgame.graphics.constants.TEAM2
 import com.n9mtq4.robotgame.graphics.layers.GridBackground
 import com.n9mtq4.robotgame.graphics.layers.PixelRender
 import java.awt.Rectangle

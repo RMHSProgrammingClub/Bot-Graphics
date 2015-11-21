@@ -2,6 +2,8 @@
 
 package com.n9mtq4.robotgame.graphics
 
+import com.n9mtq4.robotgame.graphics.constants.GAME_DATA_FILE
+
 /**
  * Created by will on 11/17/15 at 2:43 PM.
  *
@@ -10,7 +12,7 @@ package com.n9mtq4.robotgame.graphics
 fun main(args: Array<String>) {
 	
 	GAME_DATA_FILE = args.joinToString(separator = " ")
-	println("Reading data from: $GAME_DATA_FILE")
+	println("Reading data from: ${GAME_DATA_FILE}")
 	
 	val graphics = GraphicsDisplay()
 	graphics.start()

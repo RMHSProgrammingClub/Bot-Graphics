@@ -3,12 +3,12 @@ package com.n9mtq4.robotgame.graphics.layers
 import com.n9mtq4.patternimage.Pattern
 import com.n9mtq4.patternimage.PatternImage
 import com.n9mtq4.patternimage.colorgetter.ColorGetter
-import com.n9mtq4.robotgame.graphics.DISPLAY_HEIGHT
-import com.n9mtq4.robotgame.graphics.DISPLAY_WIDTH
+import com.n9mtq4.robotgame.graphics.constants.DISPLAY_HEIGHT
+import com.n9mtq4.robotgame.graphics.constants.DISPLAY_WIDTH
 import com.n9mtq4.robotgame.graphics.GraphicsDisplay
-import com.n9mtq4.robotgame.graphics.SCALE
-import com.n9mtq4.robotgame.graphics.SHOOTING_COLOR
-import com.n9mtq4.robotgame.graphics.isInBounds
+import com.n9mtq4.robotgame.graphics.constants.SCALE
+import com.n9mtq4.robotgame.graphics.constants.SHOOTING_COLOR
+import com.n9mtq4.robotgame.graphics.utils.isInBounds
 
 /**
  * Created by will on 11/20/15 at 7:02 PM.

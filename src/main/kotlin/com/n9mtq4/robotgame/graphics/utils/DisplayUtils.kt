@@ -1,4 +1,7 @@
-package com.n9mtq4.robotgame.graphics
+package com.n9mtq4.robotgame.graphics.utils
+
+import com.n9mtq4.robotgame.graphics.constants.DISPLAY_HEIGHT
+import com.n9mtq4.robotgame.graphics.constants.DISPLAY_WIDTH
 
 /**
  * Created by will on 11/20/15 at 9:37 PM.

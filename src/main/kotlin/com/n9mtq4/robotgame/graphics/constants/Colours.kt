@@ -1,4 +1,4 @@
-package com.n9mtq4.robotgame.graphics
+package com.n9mtq4.robotgame.graphics.constants
 
 /**
  * Created by will on 11/17/15 at 3:02 PM.
