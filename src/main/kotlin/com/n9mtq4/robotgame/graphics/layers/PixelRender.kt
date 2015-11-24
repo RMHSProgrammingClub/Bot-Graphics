@@ -3,9 +3,9 @@ package com.n9mtq4.robotgame.graphics.layers
 import com.n9mtq4.patternimage.Pattern
 import com.n9mtq4.patternimage.PatternImage
 import com.n9mtq4.patternimage.colorgetter.ColorGetter
+import com.n9mtq4.robotgame.graphics.GraphicsDisplay
 import com.n9mtq4.robotgame.graphics.constants.DISPLAY_HEIGHT
 import com.n9mtq4.robotgame.graphics.constants.DISPLAY_WIDTH
-import com.n9mtq4.robotgame.graphics.GraphicsDisplay
 import com.n9mtq4.robotgame.graphics.constants.SCALE
 import com.n9mtq4.robotgame.graphics.constants.SHOOTING_COLOR
 import com.n9mtq4.robotgame.graphics.utils.isInBounds
@@ -21,20 +21,20 @@ class PixelRender(val graphicsDisplay: GraphicsDisplay) : ColorGetter {
 		
 	init {
 		
-		this.pixels = Array(DISPLAY_HEIGHT * DISPLAY_WIDTH, { -1 })
+		this.pixels = Array(DISPLAY_HEIGHT * DISPLAY_WIDTH * SCALE, { -1 })
 		
 	}
 	
 	override fun getColorAt(x: Int, y: Int, pattern: Pattern, image: PatternImage): Int {
 		
-		return pixels[DISPLAY_WIDTH * (x / SCALE) + (y / SCALE)] // TODO: is this math right?
+		return pixels[DISPLAY_WIDTH * (y / SCALE) + (x / SCALE)] // TODO: is this math right?
 		
 	}
 	
 	internal fun clear() {
 //		internalMap.map { -1 } // this only copies it
 //		TODO: find a functional way to do this
-		for (i in 0..pixels.size) {
+		for (i in 0..pixels.size - 1) {
 			pixels[i] = -1
 		}
 	}
@@ -44,7 +44,7 @@ class PixelRender(val graphicsDisplay: GraphicsDisplay) : ColorGetter {
 	}
 	
 	internal fun setPixel(x: Int, y: Int, color: Int) {
-		setPixel(DISPLAY_WIDTH * x + y, color) // TODO: is this math right?
+		setPixel(DISPLAY_WIDTH * y + x, color) // TODO: is this math right?
 	}
 	
 	internal fun drawLine(x: Int, y: Int, angle: Int) {
@@ -52,10 +52,10 @@ class PixelRender(val graphicsDisplay: GraphicsDisplay) : ColorGetter {
 //		for some reason, jake wants degrees
 //		TODO: nag jake about changing it to radians
 		val nx = Math.cos(Math.toDegrees(angle.toDouble()))
-		val ny = Math.sin(Math.toDegrees(angle.toDouble()))
-		var cx = x.toDouble()
-		var cy = y.toDouble()
-		while (isInBounds(cx, cy)) {
+		val ny = -Math.sin(Math.toDegrees(angle.toDouble()))
+		var cx: Double = x.toDouble()
+		var cy: Double = y.toDouble()
+		while (isInBounds(cx.toInt(), cy.toInt())) {
 			setPixel(cx.toInt(), cy.toInt(), SHOOTING_COLOR)
 			cx += nx
 			cy += ny

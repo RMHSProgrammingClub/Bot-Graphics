@@ -47,7 +47,8 @@ class GraphicsDisplay : PatternImage(DISPLAY_WIDTH * SCALE, DISPLAY_HEIGHT * SCA
 		
 		this.frame = JFrame("Bot Game")
 //		i know passing 'this' twice is messy, but its logical
-		this.patternContainer = TickingPatternContainer(this, this, true, PatternImageContainer.TICKS_DEFAULT, 1)
+//		TODO: change back to true
+		this.patternContainer = TickingPatternContainer(this, this, false, PatternImageContainer.TICKS_DEFAULT, 1)
 		
 		frame.add(patternContainer)
 		
@@ -102,7 +103,11 @@ class GraphicsDisplay : PatternImage(DISPLAY_WIDTH * SCALE, DISPLAY_HEIGHT * SCA
 		val shootingData = bufferedReader.readLine()
 		
 //		make sure the game is still going
-		if (mapData.startsWith("WIN")) gameOver(mapData) // TODO: game over logic
+//		TODO: game over logic
+		if (mapData.startsWith("WIN")) {
+			gameOver(mapData)
+			return
+		}
 		
 		pixelRender.clear() // clear the previous turns map data
 		

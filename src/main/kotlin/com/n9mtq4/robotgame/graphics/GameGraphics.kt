@@ -11,8 +11,9 @@ import com.n9mtq4.robotgame.graphics.constants.GAME_DATA_FILE
  */
 fun main(args: Array<String>) {
 	
-	GAME_DATA_FILE = args.joinToString(separator = " ")
-	println("Reading data from: ${GAME_DATA_FILE}")
+//	GAME_DATA_FILE = args.joinToString(separator = " ")
+	GAME_DATA_FILE = "/Users/will/Desktop/test.txt"
+	println("Reading data from: $GAME_DATA_FILE")
 	
 	val graphics = GraphicsDisplay()
 	graphics.start()

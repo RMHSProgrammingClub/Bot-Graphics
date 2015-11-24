@@ -9,6 +9,4 @@ import com.n9mtq4.robotgame.graphics.constants.DISPLAY_WIDTH
  * @author Will "n9Mtq4" Bresnahan
  */
 fun isInBounds(x: Double, y: Double) = isInBounds(x.toInt(), y.toInt())
-fun isInBounds(x: Int, y: Int): Boolean {
-	return x > 0 && y > 0 && x < DISPLAY_WIDTH && y < DISPLAY_HEIGHT
-}
+fun isInBounds(x: Int, y: Int) = x >= 0 && y >= 0 && x < DISPLAY_WIDTH && y < DISPLAY_HEIGHT
