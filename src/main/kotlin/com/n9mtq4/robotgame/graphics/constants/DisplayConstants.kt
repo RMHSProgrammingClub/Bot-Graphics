@@ -7,5 +7,5 @@ package com.n9mtq4.robotgame.graphics.constants
  */
 val DISPLAY_HEIGHT = 256
 val DISPLAY_WIDTH = 512
-val SCALE = 3
+val SCALE = 1
 val GRID_INTERVAL = 8

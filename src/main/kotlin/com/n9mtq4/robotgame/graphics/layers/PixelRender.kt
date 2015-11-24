@@ -44,18 +44,19 @@ class PixelRender(val graphicsDisplay: GraphicsDisplay) : ColorGetter {
 	}
 	
 	internal fun setPixel(x: Int, y: Int, color: Int) {
-		setPixel(DISPLAY_WIDTH * y + x, color) // TODO: is this math right?
+//		TODO: is this math right?
+		setPixel(DISPLAY_WIDTH * y + x, color)
 	}
 	
 	internal fun drawLine(x: Int, y: Int, angle: Int) {
 //		TODO: is this math right?
 //		for some reason, jake wants degrees
 //		TODO: nag jake about changing it to radians
-		val nx = Math.cos(Math.toDegrees(angle.toDouble()))
-		val ny = -Math.sin(Math.toDegrees(angle.toDouble()))
+		val nx = Math.cos(Math.toRadians(angle.toDouble()))
+		val ny = -Math.sin(Math.toRadians(angle.toDouble()))
 		var cx: Double = x.toDouble()
 		var cy: Double = y.toDouble()
-		while (isInBounds(cx.toInt(), cy.toInt())) {
+		while (isInBounds(cx, cy)) {
 			setPixel(cx.toInt(), cy.toInt(), SHOOTING_COLOR)
 			cx += nx
 			cy += ny
