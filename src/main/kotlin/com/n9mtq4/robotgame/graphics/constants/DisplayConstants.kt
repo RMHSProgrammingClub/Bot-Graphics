@@ -5,7 +5,7 @@ package com.n9mtq4.robotgame.graphics.constants
  *
  * @author Will "n9Mtq4" Bresnahan
  */
-val DISPLAY_HEIGHT = 256
-val DISPLAY_WIDTH = 512
-val SCALE = 1
+val DISPLAY_HEIGHT = 64
+val DISPLAY_WIDTH = 64
+val SCALE = 10
 val GRID_INTERVAL = 8

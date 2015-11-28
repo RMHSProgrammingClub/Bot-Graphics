@@ -10,14 +10,14 @@ import com.n9mtq4.robotgame.graphics.constants.DISPLAY_HEIGHT
 import com.n9mtq4.robotgame.graphics.constants.DISPLAY_WIDTH
 import com.n9mtq4.robotgame.graphics.constants.GAME_DATA_FILE
 import com.n9mtq4.robotgame.graphics.constants.SCALE
-import com.n9mtq4.robotgame.graphics.constants.TEAM1
-import com.n9mtq4.robotgame.graphics.constants.TEAM2
+import com.n9mtq4.robotgame.graphics.constants.TEAM_COLOR
 import com.n9mtq4.robotgame.graphics.layers.GridBackground
 import com.n9mtq4.robotgame.graphics.layers.PixelRender
 import java.awt.Rectangle
 import java.io.BufferedReader
 import java.io.FileReader
 import javax.swing.JFrame
+import kotlin.test.assertTrue
 
 /**
  * Created by will on 11/17/15 at 2:45 PM.
@@ -104,12 +104,16 @@ class GraphicsDisplay : PatternImage(DISPLAY_WIDTH * SCALE, DISPLAY_HEIGHT * SCA
 		
 //		make sure the game is still going
 //		TODO: game over logic
-		if (mapData.startsWith("WIN")) {
+		if (mapData.startsWith("WIN") || mapData.startsWith("DRAW")) {
 			gameOver(mapData)
 			return
 		}
 		
 		pixelRender.clear() // clear the previous turns map data
+		
+//		make sure the read map data is correct
+		assertTrue(mapData.length == pixelRender.pixels.size / SCALE, 
+				"Map Data isn't the correct length: expected: ${pixelRender.pixels.size / SCALE}, actual: ${mapData.length}")
 		
 //		add this turn's robots
 		mapData.toCharArray().forEachIndexed { i, it ->
@@ -117,8 +121,9 @@ class GraphicsDisplay : PatternImage(DISPLAY_WIDTH * SCALE, DISPLAY_HEIGHT * SCA
 			
 //			start populating the map
 			when (it) {
-				'1' -> pixelRender.setPixel(i, TEAM1)
-				'2' -> pixelRender.setPixel(i, TEAM2)
+				'1' -> pixelRender.setPixel(i, TEAM_COLOR[0])
+				'2' -> pixelRender.setPixel(i, TEAM_COLOR[1])
+				'4' -> pixelRender.setPixel(i, BOX)
 				'9' -> pixelRender.setPixel(i, BOX)
 				else -> println("ERROR: unknown value in map: '$it'")
 			}
@@ -147,10 +152,13 @@ class GraphicsDisplay : PatternImage(DISPLAY_WIDTH * SCALE, DISPLAY_HEIGHT * SCA
 	 * Called when the game has ended
 	 * */
 	internal fun gameOver(win: String) {
+		
 		this.gameEnded = true
-//		TODO: game over rendering
-//		WIN1 or WIN2
 		println("Game is over! Data: $win")
+		val winningTeam = win.substring("WIN".length).toInt()
+		
+		addPattern(Pattern(StaticColor(TEAM_COLOR[winningTeam - 1]), Rectangle(0, 0, width, height)))
+		
 	}
 	
 }

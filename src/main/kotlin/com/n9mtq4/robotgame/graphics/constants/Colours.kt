@@ -7,7 +7,6 @@ package com.n9mtq4.robotgame.graphics.constants
  */
 val BACKGROUND = 0xb4b4b4 // the background color of the map
 val GRID_HIGHLIGHT = 0x000000 // the lines on the grid
-val TEAM1 = 0xff0000 // the color to render team 1s robot
-val TEAM2 = 0x0000ff // the color to render team 2s robot
 val BOX = 0x00ff00 // the color to render a box
 val SHOOTING_COLOR = 0xff00ff
+val TEAM_COLOR = arrayOf(0xff0000, 0x0000ff)
