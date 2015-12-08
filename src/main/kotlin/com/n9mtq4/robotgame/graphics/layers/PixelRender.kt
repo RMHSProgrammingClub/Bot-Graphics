@@ -49,9 +49,6 @@ class PixelRender(val graphicsDisplay: GraphicsDisplay) : ColorGetter {
 	}
 	
 	internal fun drawLine(x: Int, y: Int, angle: Int) {
-//		TODO: is this math right?
-//		for some reason, jake wants degrees
-//		TODO: nag jake about changing it to radians
 		val nx = Math.cos(Math.toRadians(angle.toDouble()))
 		val ny = -Math.sin(Math.toRadians(angle.toDouble()))
 		var cx: Double = x.toDouble()

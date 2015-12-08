@@ -121,11 +121,11 @@ class GraphicsDisplay : PatternImage(DISPLAY_WIDTH * SCALE, DISPLAY_HEIGHT * SCA
 			
 //			start populating the map
 			when (it) {
-				'1' -> pixelRender.setPixel(i, TEAM_COLOR[0])
-				'2' -> pixelRender.setPixel(i, TEAM_COLOR[1])
-				'4' -> pixelRender.setPixel(i, BOX)
-				'9' -> pixelRender.setPixel(i, BOX)
-				else -> println("ERROR: unknown value in map: '$it'")
+				'1' -> pixelRender.setPixel(i, TEAM_COLOR[1]) // team 1
+				'2' -> pixelRender.setPixel(i, TEAM_COLOR[2]) // team 2
+				'4' -> pixelRender.setPixel(i, BOX) // wall
+				'9' -> pixelRender.setPixel(i, BOX) // box
+				else -> println("ERROR: unknown value in map: '$it'") // other!
 			}
 			
 		}
@@ -153,11 +153,12 @@ class GraphicsDisplay : PatternImage(DISPLAY_WIDTH * SCALE, DISPLAY_HEIGHT * SCA
 	 * */
 	internal fun gameOver(win: String) {
 		
-		this.gameEnded = true
-		println("Game is over! Data: $win")
-		val winningTeam = win.substring("WIN".length).toInt()
+		this.gameEnded = true // make sure everyone knows the game is over - stops the tick method
+		println("Game is over! Data: $win") // print out info
 		
-		addPattern(Pattern(StaticColor(TEAM_COLOR[winningTeam - 1]), Rectangle(0, 0, width, height)))
+		val winningTeam = if (win.trim() == "DRAW") 0 else win.substring("WIN".length).toInt() // set the winning team
+		
+		addPattern(Pattern(StaticColor(TEAM_COLOR[winningTeam]), Rectangle(0, 0, width, height))) // render the color of that team
 		
 	}
 	
