@@ -8,6 +8,7 @@ import com.n9mtq4.robotgame.graphics.constants.BACKGROUND
 import com.n9mtq4.robotgame.graphics.constants.BOX
 import com.n9mtq4.robotgame.graphics.constants.DISPLAY_HEIGHT
 import com.n9mtq4.robotgame.graphics.constants.DISPLAY_WIDTH
+import com.n9mtq4.robotgame.graphics.constants.FLAG_COLOR
 import com.n9mtq4.robotgame.graphics.constants.GAME_DATA_FILE
 import com.n9mtq4.robotgame.graphics.constants.SCALE
 import com.n9mtq4.robotgame.graphics.constants.TEAM_COLOR
@@ -123,8 +124,9 @@ class GraphicsDisplay : PatternImage(DISPLAY_WIDTH * SCALE, DISPLAY_HEIGHT * SCA
 			when (it) {
 				'1' -> pixelRender.setPixel(i, TEAM_COLOR[1]) // team 1
 				'2' -> pixelRender.setPixel(i, TEAM_COLOR[2]) // team 2
+				'3' -> pixelRender.setPixel(i, BOX) // box
 				'4' -> pixelRender.setPixel(i, BOX) // wall
-				'9' -> pixelRender.setPixel(i, BOX) // box
+				'5' -> pixelRender.setPixel(i, FLAG_COLOR) // flag
 				else -> println("ERROR: unknown value in map: '$it'") // other!
 			}
 			
