@@ -16,9 +16,10 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile files("libs/PatternImage.jar")
+    compile files("libs/KotlinExtLib.jar")
 }
 buildscript {
-    ext.kotlin_version = '1.0.0-beta-2423'
+    ext.kotlin_version = '1.0.1'
     repositories {
         mavenCentral()
     }
@@ -29,9 +30,18 @@ buildscript {
 sourceSets {
     main.java.srcDirs += 'src/main/kotlin'
 }
+
 jar {
+    baseName = project.name + "-NoLibs"
     manifest {
         attributes 'Main-Class': mainClassName
     }
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
+
+task fatJar(type: Jar) {
+    baseName = project.name + "-FatJar"
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+build.dependsOn fatJar

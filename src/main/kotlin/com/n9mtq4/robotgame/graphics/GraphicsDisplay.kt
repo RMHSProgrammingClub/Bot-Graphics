@@ -1,5 +1,6 @@
 package com.n9mtq4.robotgame.graphics
 
+import com.n9mtq4.kotlin.extlib.assertTrue
 import com.n9mtq4.patternimage.Pattern
 import com.n9mtq4.patternimage.PatternImage
 import com.n9mtq4.patternimage.colorgetter.StaticColor
@@ -18,7 +19,6 @@ import java.awt.Rectangle
 import java.io.BufferedReader
 import java.io.FileReader
 import javax.swing.JFrame
-import kotlin.test.assertTrue
 
 /**
  * Created by will on 11/17/15 at 2:45 PM.
